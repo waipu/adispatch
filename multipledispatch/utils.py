@@ -5,7 +5,6 @@ def raises(err, lamda):
     except err:
         return True
 
-
 def expand_tuples(L):
     """
 

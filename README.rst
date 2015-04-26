@@ -1,16 +1,17 @@
 Multiple Dispatch
 =================
 
-|Build Status| |Coverage Status| |Version Status| |Downloads|
+|Build Status|
 
 A relatively sane approach to multiple dispatch in Python.
 
 This implementation of multiple dispatch is efficient, mostly complete,
 performs static analysis to avoid conflicts, and provides optional namespace
-support.  It looks good too.
+support. It looks good too.
 
 See the documentation at http://multiple-dispatch.readthedocs.org/
 
+Forked to support function annotations and possibly typechecking in >=python-3.3, <python-3.3 support is therefore dropped;
 
 Example
 -------
@@ -134,12 +135,6 @@ Links
 .. _`PEP 3124 - *Overloading, Generic Functions, Interfaces, and Adaptation*`:
   http://legacy.python.org/dev/peps/pep-3124/
 
-.. |Build Status| image:: https://travis-ci.org/mrocklin/multipledispatch.png
+.. |Build Status| image:: https://travis-ci.org/waipu/multipledispatch.png
    :target: https://travis-ci.org/mrocklin/multipledispatch
-.. |Version Status| image:: https://pypip.in/v/multipledispatch/badge.png
-   :target: https://pypi.python.org/pypi/multipledispatch/
-.. |Downloads| image:: https://pypip.in/d/multipledispatch/badge.png
-   :target: https://pypi.python.org/pypi/multipledispatch/
-.. |Coverage Status| image:: https://coveralls.io/repos/mrocklin/multipledispatch/badge.png
-   :target: https://coveralls.io/r/mrocklin/multipledispatch
 .. _License: https://github.com/mrocklin/multipledispatch/blob/master/LICENSE.txt
