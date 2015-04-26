@@ -1,14 +1,14 @@
 language: python
 python:
-    - "2.7"
-    - "3.3"
-    - "3.4"
+  - "3.2"
+  - "3.3"
+  - "3.4"
 
 install:
-    - pip install coverage --use-mirrors
+  - pip install coverage --use-mirrors
 
 script:
-    - nosetests --with-doctest
-
+  - nosetests --with-doctest
+    
 notifications:
   email: false
