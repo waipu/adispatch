@@ -11,18 +11,17 @@ def adispatch(**kwargs):
 
     Supports dispatch on all non-keyword arguments.
     Сollects implementations based on the function/method name, ignores namespaces.
-
     If ambiguous type signatures occur a warning is raised when the function is
     defined suggesting the additional method to break the ambiguity.
 
     Examples
     --------
 
-    >>> @dispatch()
+    >>> @adispatch()
     ... def f(x: int):
     ...     return x + 1
 
-    >>> @dispatch()
+    >>> @adispatch()
     ... def f(x: float):
     ...     return x - 1
 
@@ -41,10 +40,10 @@ def adispatch(**kwargs):
     Dispatch on instance methods within classes
 
     >>> class MyClass(object):
-    ...     @dispatch()
+    ...     @adispatch()
     ...     def __init__(self, data: list):
     ...         self.data = data
-    ...     @dispatch()
+    ...     @adispatch()
     ...     def __init__(self, datum: int):
     ...         self.data = [datum]
     """
