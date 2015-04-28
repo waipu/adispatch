@@ -5,27 +5,25 @@ Multiple Dispatch
 
 A relatively sane approach to multiple dispatch in Python.
 
+Forked from to support and use annotations for dispatch.
 This implementation of multiple dispatch is efficient, mostly complete,
 performs static analysis to avoid conflicts, and provides optional namespace
 support. It looks good too.
 
-See the documentation at http://multiple-dispatch.readthedocs.org/
-
-Forked to support function annotations and possibly typechecking in >=python-3.3, <python-3.3 support is therefore dropped;
 
 Example
 -------
 
 .. code-block:: python
 
-   >>> from multipledispatch import dispatch
+   >>> from multipledispatch import adispatch
 
-   >>> @dispatch(int, int)
-   ... def add(x, y):
+   >>> @adispatch()
+   ... def add(x: int, y: int):
    ...     return x + y
 
-   >>> @dispatch(object, object)
-   ... def add(x, y):
+   >>> @adispatch()
+   ... def add(x: object, y: object):
    ...     return "%s + %s" % (x, y)
 
    >>> add(1, 2)
@@ -62,8 +60,8 @@ What this doesn't do
 
 .. code-block:: python
 
-   @dispatch([int])
-   def add(*args):
+   @adispatch()
+   def add(*args: [int]):
        ...
 
 -  Diagonal dispatch
@@ -71,33 +69,15 @@ What this doesn't do
 .. code-block:: python
 
    a = arbitrary_type()
-   @dispatch(a, a)
-   def are_same_type(x, y):
+   @adispatch()
+   def are_same_type(x: a, y: a):
        return True
 
 
 Installation and Dependencies
 -----------------------------
 
-``multipledispatch`` is on the Python Package Index (PyPI):
-
-::
-
-    pip install multipledispatch
-
-or
-
-::
-
-    easy_install multipledispatch
-
-
-``multipledispatch`` supports Python 2.6+ and Python 3.2+ with a common
-codebase.  It is pure Python and requires no dependencies beyond the standard
-library.
-
-It is, in short, a light weight dependency.
-
+``multipledispatch`` supports Python 3.2+, is pure python and requires no other dependencies.
 
 License
 -------

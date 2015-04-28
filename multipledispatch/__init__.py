@@ -1,4 +1,4 @@
-from .core import dispatch
+from .core import dispatch, adispatch
 from .dispatcher import (Dispatcher, halt_ordering, restart_ordering,
     MDNotImplementedError)
 
