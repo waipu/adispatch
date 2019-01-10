@@ -116,5 +116,5 @@ Links
   http://legacy.python.org/dev/peps/pep-3124/
 
 .. |Build Status| image:: https://travis-ci.org/waipu/multipledispatch.png
-   :target: https://travis-ci.org/mrocklin/multipledispatch
-.. _License: https://github.com/mrocklin/multipledispatch/blob/master/LICENSE.txt
+   :target: https://travis-ci.org/waipu/multipledispatch
+.. _License: https://github.com/waipu/multipledispatch/blob/master/LICENSE.txt
