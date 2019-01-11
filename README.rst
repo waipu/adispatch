@@ -16,7 +16,7 @@ Example
 
 .. code-block:: python
 
-   >>> from multipledispatch import adispatch
+   >>> from adispatch import adispatch
 
    >>> @adispatch()
    ... def add(x: int, y: int):
@@ -77,7 +77,7 @@ What this doesn't do
 Installation and Dependencies
 -----------------------------
 
-``multipledispatch`` supports Python 3.2+, is pure python and requires no other dependencies.
+``adispatch`` supports Python 3.2+, is pure python and requires no other dependencies.
 
 License
 -------
@@ -115,6 +115,6 @@ Links
 .. _`PEP 3124 - *Overloading, Generic Functions, Interfaces, and Adaptation*`:
   http://legacy.python.org/dev/peps/pep-3124/
 
-.. |Build Status| image:: https://travis-ci.org/waipu/multipledispatch.png
-   :target: https://travis-ci.org/waipu/multipledispatch
-.. _License: https://github.com/waipu/multipledispatch/blob/master/LICENSE.txt
+.. |Build Status| image:: https://travis-ci.org/waipu/adispatch.png
+   :target: https://travis-ci.org/waipu/adispatch
+.. _License: https://github.com/waipu/adispatch/blob/master/LICENSE

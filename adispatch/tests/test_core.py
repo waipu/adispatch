@@ -1,24 +1,24 @@
-from multipledispatch import dispatch
-from multipledispatch.utils import raises
+from adispatch import adispatch
+from adispatch.utils import raises
 from functools import partial
 
 test_namespace = dict()
 
-orig_dispatch = dispatch
-dispatch = partial(dispatch, namespace=test_namespace)
+orig_adispatch = adispatch
+adispatch = partial(adispatch, namespace=test_namespace)
 
 
 def test_singledispatch():
-    @dispatch(int)
-    def f(x):
+    @adispatch()
+    def f(x: int):
         return x + 1
 
-    @dispatch(int)
-    def g(x):
+    @adispatch()
+    def g(x: int):
         return x + 2
 
-    @dispatch(float)
-    def f(x):
+    @adispatch()
+    def f(x: float):
         return x - 1
 
     assert f(1) == 2
@@ -29,12 +29,12 @@ def test_singledispatch():
 
 
 def test_multipledispatch():
-    @dispatch(int, int)
-    def f(x, y):
+    @adispatch()
+    def f(x: int, y: int):
         return x + y
 
-    @dispatch(float, float)
-    def f(x, y):
+    @adispatch()
+    def f(x: float, y: float):
         return x - y
 
     assert f(1, 2) == 3
@@ -49,12 +49,12 @@ class E(C): pass
 
 
 def test_inheritance():
-    @dispatch(A)
-    def f(x):
+    @adispatch()
+    def f(x: A):
         return 'a'
 
-    @dispatch(B)
-    def f(x):
+    @adispatch()
+    def f(x: B):
         return 'b'
 
     assert f(A()) == 'a'
@@ -63,12 +63,12 @@ def test_inheritance():
 
 
 def test_inheritance_and_multiple_dispatch():
-    @dispatch(A, A)
-    def f(x, y):
+    @adispatch()
+    def f(x: A, y: A):
         return type(x), type(y)
 
-    @dispatch(A, B)
-    def f(x, y):
+    @adispatch()
+    def f(x: A, y: B):
         return 0
 
     assert f(A(), A()) == (A, A)
@@ -79,36 +79,36 @@ def test_inheritance_and_multiple_dispatch():
 
 
 def test_competing_solutions():
-    @dispatch(A)
-    def h(x):
+    @adispatch()
+    def h(x: A):
         return 1
 
-    @dispatch(C)
-    def h(x):
+    @adispatch()
+    def h(x: C):
         return 2
 
     assert h(D()) == 2
 
 
 def test_competing_multiple():
-    @dispatch(A, B)
-    def h(x, y):
+    @adispatch()
+    def h(x: A, y: B):
         return 1
 
-    @dispatch(C, B)
-    def h(x, y):
+    @adispatch()
+    def h(x: C, y: B):
         return 2
 
     assert h(D(), B()) == 2
 
 
 def test_competing_ambiguous():
-    @dispatch(A, C)
-    def f(x, y):
+    @adispatch()
+    def f(x: A, y: C):
         return 2
 
-    @dispatch(C, A)
-    def f(x, y):
+    @adispatch()
+    def f(x: C, y: A):
         return 2
 
     assert f(A(), C()) == f(C(), A()) == 2
@@ -116,22 +116,22 @@ def test_competing_ambiguous():
 
 
 def test_caching_correct_behavior():
-    @dispatch(A)
-    def f(x):
+    @adispatch()
+    def f(x: A):
         return 1
 
     assert f(C()) == 1
 
-    @dispatch(C)
-    def f(x):
+    @adispatch()
+    def f(x: C):
         return 2
 
     assert f(C()) == 2
 
 
 def test_union_types():
-    @dispatch((A, C))
-    def f(x):
+    @adispatch()
+    def f(x: (A, C)):
         return 1
 
     assert f(A()) == 1
@@ -142,43 +142,30 @@ def test_namespaces():
     ns1 = dict()
     ns2 = dict()
 
-    def foo(x):
+    def foo(x: int):
         return 1
-    foo1 = orig_dispatch(int, namespace=ns1)(foo)
+    foo1 = orig_adispatch(namespace=ns1)(foo)
 
-    def foo(x):
+    def foo(x: int):
         return 2
-    foo2 = orig_dispatch(int, namespace=ns2)(foo)
+    foo2 = orig_adispatch(namespace=ns2)(foo)
 
     assert foo1(0) == 1
     assert foo2(0) == 2
 
 
-"""
-Fails
-def test_dispatch_on_dispatch():
-    @dispatch(A)
-    @dispatch(C)
-    def q(x):
-        return 1
-
-    assert q(A()) == 1
-    assert q(C()) == 1
-"""
-
-
 def test_methods():
     class Foo(object):
-        @dispatch(float)
-        def f(self, x):
+        @adispatch()
+        def f(self, x: float):
             return x - 1
 
-        @dispatch(int)
-        def f(self, x):
+        @adispatch()
+        def f(self, x: int):
             return x + 1
 
-        @dispatch(int)
-        def g(self, x):
+        @adispatch()
+        def g(self, x: int):
             return x + 3
 
 
@@ -190,12 +177,12 @@ def test_methods():
 
 def test_methods_multiple_dispatch():
     class Foo(object):
-        @dispatch(A, A)
-        def f(x, y):
+        @adispatch()
+        def f(x: A, y: A):
             return 1
 
-        @dispatch(A, C)
-        def f(x, y):
+        @adispatch()
+        def f(x: A, y: C):
             return 2
 
 

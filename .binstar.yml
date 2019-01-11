@@ -1,4 +1,4 @@
-package: multipledispatch
+package: adispatch
 platform:
   - linux-64
   - linux-32
@@ -7,6 +7,8 @@ platform:
 engine:
   - python=3.3
   - python=3.4
+  - python=3.6
+  - python=3.7
 script:
   - touch build.sh
   - conda build .

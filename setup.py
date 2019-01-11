@@ -2,16 +2,16 @@
 
 from os.path import exists
 from setuptools import setup
-import multipledispatch
+import adispatch
 
-setup(name='multipledispatch',
-      version=multipledispatch.__version__,
-      description='Multiple dispatch',
-      url='http://github.com/waipu/multipledispatch/',
+setup(name='adispatch',
+      version=adispatch.__version__,
+      description='Multiple dispatch in function annotaions',
+      url='http://github.com/waipu/adispatch/',
       author_email='waipu@cirno.de',
       license='BSD',
       keywords='dispatch',
-      packages=['multipledispatch'],
+      packages=['adispatch'],
       long_description=(open('README.rst').read() if exists('README.rst')
                         else ''),
       zip_safe=False)

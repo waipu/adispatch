@@ -1,11 +1,11 @@
-from multipledispatch import dispatch
+from multipledispatch import adispatch
 
-@dispatch(int)
-def isint(x):
+@adispatch()
+def isint(x: int):
     return True
 
-@dispatch(object)
-def isint(x):
+@adispatch()
+def isint(x: object):
     return False
 
 def test_simple():

@@ -1,6 +1,6 @@
 package:
-    name: multipledispatch 
-    version: "0.4.6"
+    name: adispatch 
+    version: "0.5.0"
 
 build:
     number: {{environ.get('BINSTAR_BUILD', 1)}}
@@ -17,5 +17,5 @@ requirements:
       - python
 
 about:
-    home: http://multiple-dispatch.readthedocs.org/
+    home: https://github.com/waipu/adispatch
     license: BSD
