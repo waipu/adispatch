@@ -9,6 +9,14 @@ install:
 
 script:
   - nosetests --with-doctest
-    
+
+deploy:
+  provider: pypi
+  user: waipu
+  password:
+    secure: "AkcoiJJZPoIOYFsAssTIe01+INrcWLNPibRgo5PPHfQ87iBJJehEWTlX/CP4m1Bv+kwstnBIGVe75Tk0okJklLpCQZe6TrvhtM54E///n1y6+jtlg1wke3GMKBYqpRLUDnHllVYAC6+YsREIcxClRZtjft9Qu+9wuOmPCB7f53U="
+  on:
+    tags: true
+
 notifications:
   email: false
